@@ -2,52 +2,17 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>点位挑战</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
-    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
-    <script src="./js/rastercoords.js"></script>
-    <link rel="stylesheet" href="./css/index.css" />
-    <title></title>
+    <script type="module" crossorigin src="/assets/index-f9bfe0dd.js"></script>
+    <link rel="stylesheet" href="/assets/index-de6d4864.css">
   </head>
   <body>
-    <div id="map"></div>
-    <script>
-      // 图片尺寸
-      const img = [14173, 11254];
-      const minZoom = 2
-      // create the map
-      const map = L.map('map', {
-        crs: L.CRS.Simple,
-        minZoom,
-        maxZoom:7,
-        zoomControl:false,
-        zoomSnap:.5,
-      })
-      // assign map and image dimensions
-      const rc = new L.RasterCoords(map, img)
-      // set max zoom Level (might be `x` if gdal2tiles was called with `-z 0-x` option)
-      // map.setMaxZoom(rc.zoomLevel()) // 设置最佳 最大缩放等级 根据图片尺寸自动计算
-      // all coordinates need to be unprojected using the `unproject` method
-      // set the view in the lower right edge of the image
-      map.setView(rc.unproject([img[0], img[1]]), minZoom)
-
-      // set markers on click events in the map
-      map.on('click', function (event) {
-        // any position in leaflet needs to be projected to obtain the image coordinates
-        const coords = rc.project(event.latlng)
-        const marker = L.marker(rc.unproject(coords)).addTo(map)
-        // marker.bindPopup('[' + Math.floor(coords.x) + ',' + Math.floor(coords.y) + ']').openPopup()
-      })
-      // python gdal2tiles.py -l -p raster -z 0-8 -w none input.png tiles
-
-      // the tile layer containing the image generated with `gdal2tiles --leaflet -p raster -w none <img> tiles`
-      L.tileLayer('./tiles_tivat/{z}/{x}/{y}.png', {
-        noWrap: true,
-        minZoom,
-        bounds: rc.getMaxBounds(),
-        maxNativeZoom: rc.zoomLevel() //瓦片源可用的最大缩放数。如果指定，所有缩放级别高于 maxNativeZoom 的图块将根据 maxNativeZoom 的缩放级别进行加载并自动缩放   
-      }).addTo(map)
-    </script>
+    <div id="app"></div>
+    
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
   </body>
 </html>
+
