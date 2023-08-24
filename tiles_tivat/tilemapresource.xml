@@ -3,8 +3,8 @@
       <Title>tivat.png</Title>
       <Abstract></Abstract>
       <SRS></SRS>
-      <BoundingBox minx="0.00000000000000" miny="-13782.00000000000000" maxx="15597.00000000000000" maxy="0.00000000000000"/>
-      <Origin x="0.00000000000000" y="-13782.00000000000000"/>
+      <BoundingBox minx="0.00000000000000" miny="-13000.00000000000000" maxx="14500.00000000000000" maxy="0.00000000000000"/>
+      <Origin x="0.00000000000000" y="-13000.00000000000000"/>
       <TileFormat width="256" height="256" mime-type="image/png" extension="png"/>
       <TileSets profile="raster">
         <TileSet href="0" units-per-pixel="64.00000000000000" order="0"/>
