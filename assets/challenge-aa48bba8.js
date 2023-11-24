@@ -1,1 +1,0 @@
-import{m as e}from"./map-de03d2b9.js";import{bg as _,T as c,U as a,$ as s}from"./index-865e41d0.js";const t={class:"box"},o={__name:"challenge",setup(n){return(l,r)=>(c(),a("div",t,[s(e)]))}},d=_(o,[["__scopeId","data-v-eb74c107"]]);export{d as default};
